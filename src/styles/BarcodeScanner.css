@@ -34,3 +34,9 @@ ul {
 .scan-again-btn:hover {
   background-color: rgb(129, 120, 107);
 }
+
+@media (max-width: 789px) {
+  video {
+    width: 280px;
+  }
+}
