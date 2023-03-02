@@ -1,0 +1,36 @@
+canvas {
+  display: none;
+}
+
+video {
+  border-radius: 20px;
+}
+
+.list-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ingredients-list {
+  list-style: none;
+  display: inline-block;
+}
+
+.scan-again-btn {
+  margin-bottom: 3vh;
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+}
+
+.scan-again-btn:hover {
+  background-color: rgb(129, 120, 107);
+}

@@ -4,7 +4,7 @@ import BarcodeScanner from "./components/BarcodeScanner"
 function App() {
   return (
     <div className="App">
-      <h1>Scanner</h1>
+      <h1>Barcode scanner</h1>
       <BarcodeScanner />
     </div>
   )
