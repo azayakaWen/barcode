@@ -3,7 +3,8 @@ import Quagga from "quagga"
 
 function BarcodeScanner() {
   const [scannedBarcode, setScannedBarcode] = useState("")
-  const [productData, setProductData] = useState(null)
+  const [productName, setProductName] = useState("")
+  const [ingredients, setIngredients] = useState([])
 
   /* eslint-disable */
   useEffect(() => {
@@ -16,7 +17,8 @@ function BarcodeScanner() {
       `https://world.openfoodfacts.org/api/v0/product/${barcode}.json`
     )
     const data = await response.json()
-    setProductData(data.product)
+    setProductName(data.product.product_name)
+    setIngredients(data.product.ingredients_tags)
   }
 
   function initializeScanner() {
@@ -54,16 +56,21 @@ function BarcodeScanner() {
 
   function handleReset() {
     setScannedBarcode("")
-    setProductData(null)
+    setProductName("")
+    setIngredients([])
   }
 
   return (
     <div id="scanner-container">
-      {productData ? (
+      {ingredients.length ? (
         <>
-          <p>Product name: {productData.product_name}</p>
-          <p>Brand: {productData.brands}</p>
-          <p>Category: {productData.categories}</p>
+          <p>Product name: {productName}</p>
+          <p>Ingredients:</p>
+          <ul>
+            {ingredients.map((ingredient) => (
+              <li key={ingredient}>{ingredient}</li>
+            ))}
+          </ul>
           <p>Scanned barcode: {scannedBarcode}</p>
           <button onClick={handleReset}>Scan again</button>
         </>
